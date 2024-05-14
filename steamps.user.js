@@ -41,16 +41,18 @@ const addButtonsToPage = () => {
 		appName,
 	); // primarily for debugging purposes. had issues with appName.
 
-	buttonSet.forEach(({ url, title }) => {
+	for (const { url, title } of buttonSet) {
 		gamePurchaseActionBg.append(
 			createButton(`${url}${encodeURIComponent(appName)}`, title),
 		);
-	});
+	}
 
 	gamePurchaseActionBg.css({
-		display: "flex",
+		display: "right",
 		"align-items": "center",
+		gap: "2px",
 		"flex-wrap": "nowrap",
+		width: "fit-content",
 	});
 };
 
