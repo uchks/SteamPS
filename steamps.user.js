@@ -2,7 +2,7 @@
 // @name         SteamPS
 // @namespace    uchks
 // @author       uchks
-// @version      0.2
+// @version      0.3
 // @description  SteamPS (Steam Piracy Search), just a userscript that adds piracy search dl buttons.
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
 // @match        https://store.steampowered.com/app/*
@@ -16,16 +16,16 @@ const buttonSet = [
 	{ url: "https://www.ovagames.com/?s=", title: "OVA Games" },
 ];
 
-const createButton = (href, title) => {
-	return $("<a>", {
+const createButton = (href, title) =>
+	$("<a>", {
 		class: "btn_green_steamui btn_medium",
 		href,
+        target: "_blank",
 		css: {
 			"text-decoration": "none",
 			"font-size": "14px",
 		},
 	}).append($("<span>").text(title));
-};
 
 const addButtonsToPage = () => {
 	if (!/https:\/\/store.steampowered.com\/app\/\d+/.test(window.location.href))
@@ -33,6 +33,11 @@ const addButtonsToPage = () => {
 
 	const gamePurchaseActionBg = $(".game_purchase_action_bg").eq(0);
 	const appName = $(".apphub_AppName").first().text().trim();
+
+    if (!gamePurchaseActionBg.length || !appName) {
+        console.error("[SteamPS] Failed to find game purchase section or app name.");
+        return;
+    }
 
 	console.log(
 		"%c[SteamPS]%c App Name:",
