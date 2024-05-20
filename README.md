@@ -1,5 +1,5 @@
 # SteamPS
-![image](https://github.com/uchks/SteamPS/assets/38664452/e8b1d3ee-733c-49b3-9961-e5826377aba3)
+![image](https://github.com/uchks/SteamPS/assets/38664452/09c631c5-cdeb-4044-8ff7-c1c4e6c77c64)
 
 pirate games easier via SteamPS.  </br>
 this is a userscript. it's really simple.
